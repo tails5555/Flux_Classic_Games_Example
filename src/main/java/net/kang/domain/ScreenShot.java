@@ -5,11 +5,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Document(collection="person")
-public class Person {
+@Document(collection="screenshot")
+public class ScreenShot {
     @Id
     String id;
-    String name;
-    String phoneNumber;
-
+    int idx_id;
 }
