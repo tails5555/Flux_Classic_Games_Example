@@ -1,4 +1,4 @@
-package net.kang.domain;
+package net.kang.main.domain;
 
 public enum Suffix {
     // 각 이미지 별 확장자를 ENUM을 통해 설정한다.
