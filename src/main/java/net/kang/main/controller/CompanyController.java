@@ -17,11 +17,6 @@ public class CompanyController {
     @Autowired CompanyService companyService;
     @GetMapping("all_company")
     public Flux<Company> allCompany(){
-        System.out.println(companyService.findAll());
         return companyService.findAll();
-    }
-    @GetMapping("index")
-    public String hello(){
-        return "hello";
     }
 }

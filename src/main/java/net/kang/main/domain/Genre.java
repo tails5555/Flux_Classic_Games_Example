@@ -5,9 +5,12 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Document(collection="screenshot")
-public class ScreenShot {
+@Document(collection="genre")
+// 장르 객체
+public class Genre {
     @Id
     String id;
-    int idx_id;
+
+    // 장르 이름
+    String genre;
 }
