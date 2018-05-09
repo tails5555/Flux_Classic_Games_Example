@@ -23,6 +23,3 @@
 /dist/
 /nbdist/
 /.nb-gradle/
-
-### Database Resources ###
-!src/main/resources/application.properties
