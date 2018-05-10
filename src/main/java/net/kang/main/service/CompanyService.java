@@ -10,20 +10,33 @@ import reactor.core.publisher.Mono;
 @Service
 public class CompanyService {
     @Autowired CompanyRepository companyRepository;
+
     public Flux<Company> findAll(){
         return companyRepository.findAll();
     }
+
     public Mono<Company> findOne(String id){
         return companyRepository.findById(id);
     }
-    public void update(Company company){
-        companyRepository.findById(company.getId())
-            .map(c -> {
+
+    public Mono<Company> create(Company company){
+        return companyRepository.insert(company);
+    }
+
+    public Mono<Company> update(String id, Company company){
+        return companyRepository.findById(id)
+            .flatMap(c -> {
                 c.setName(company.getName());
                 c.setFoundDate(company.getFoundDate());
                 c.setAddress(company.getAddress());
-                return c;
-            })
-            .flatMap(c -> companyRepository.save(c));
+                return companyRepository.save(c);
+            });
+    }
+
+    public Mono<Void> delete(String id){
+        return companyRepository.findById(id)
+            .flatMap(c -> {
+                return companyRepository.delete(c);
+            });
     }
 }
