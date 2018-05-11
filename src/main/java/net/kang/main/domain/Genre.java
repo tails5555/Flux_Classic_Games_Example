@@ -12,5 +12,5 @@ public class Genre {
     String id;
 
     // 장르 이름
-    String genre;
+    String name;
 }
