@@ -2,7 +2,6 @@ package net.kang.main.mongodb.domain;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -24,13 +23,11 @@ public class Console {
     // 콘솔의 비트 수. NES는 8비트, SNES는 16비트 등으로 표현이 가능.
     int bitCount;
 
-    String imgLink;
-
     // 콘솔 발매 날짜
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     Date releaseDate;
 
-    @DBRef(db="flux_classic_games", lazy=false)
+    // 콘솔 제작 회사.
     Company company;
 
 }

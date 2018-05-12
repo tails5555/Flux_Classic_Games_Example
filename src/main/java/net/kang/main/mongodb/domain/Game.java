@@ -2,7 +2,6 @@ package net.kang.main.mongodb.domain;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -26,14 +25,11 @@ public class Game {
     Date releaseDate;
 
     // 게임 제작 회사
-    @DBRef(db="flux_classic_games", lazy=false)
     Company company;
 
-    // 게임이 작동 가능한 콘솔
-    @DBRef(db="flux_classic_games", lazy=false)
+    // 게임이 작동 가능한 콘솔(게임 기기)
     Console console;
 
     // 게임 장르
-    @DBRef(db="flux_classic_games", lazy=false)
     Genre genre;
 }
