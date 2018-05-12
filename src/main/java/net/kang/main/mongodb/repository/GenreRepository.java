@@ -1,6 +1,6 @@
-package net.kang.main.repository;
+package net.kang.main.mongodb.repository;
 
-import net.kang.main.domain.Genre;
+import net.kang.main.mongodb.domain.Genre;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 

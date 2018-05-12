@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
 
 @Configuration
-@EnableReactiveMongoRepositories(basePackages = "net.kang.main.repository")
+@EnableReactiveMongoRepositories(basePackages = "net.kang.main.mongodb.repository")
 public class ReactiveMongoConfig extends AbstractReactiveMongoConfiguration {
     @Value("${spring.data.mongodb.host}")
     private String mongoHost;

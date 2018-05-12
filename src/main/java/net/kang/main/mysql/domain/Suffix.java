@@ -1,4 +1,4 @@
-package net.kang.main.mysql_domain;
+package net.kang.main.mysql.domain;
 public enum Suffix {
     JPEG("JPEG"),
     JPG("JPG"),

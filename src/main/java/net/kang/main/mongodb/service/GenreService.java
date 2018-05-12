@@ -1,7 +1,7 @@
-package net.kang.main.service;
+package net.kang.main.mongodb.service;
 
-import net.kang.main.domain.Genre;
-import net.kang.main.repository.GenreRepository;
+import net.kang.main.mongodb.domain.Genre;
+import net.kang.main.mongodb.repository.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;

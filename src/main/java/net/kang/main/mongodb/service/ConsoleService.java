@@ -1,7 +1,7 @@
-package net.kang.main.service;
+package net.kang.main.mongodb.service;
 
-import net.kang.main.domain.Console;
-import net.kang.main.repository.ConsoleRepository;
+import net.kang.main.mongodb.domain.Console;
+import net.kang.main.mongodb.repository.ConsoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;

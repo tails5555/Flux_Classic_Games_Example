@@ -1,4 +1,4 @@
-package net.kang.main.mysql_domain;
+package net.kang.main.mysql.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;

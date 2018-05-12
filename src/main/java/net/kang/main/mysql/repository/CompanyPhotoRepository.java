@@ -1,6 +1,6 @@
-package net.kang.main.mysql_repository;
+package net.kang.main.mysql.repository;
 
-import net.kang.main.mysql_domain.CompanyPhoto;
+import net.kang.main.mysql.domain.CompanyPhoto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

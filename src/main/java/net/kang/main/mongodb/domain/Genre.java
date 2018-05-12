@@ -1,4 +1,4 @@
-package net.kang.main.domain;
+package net.kang.main.mongodb.domain;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

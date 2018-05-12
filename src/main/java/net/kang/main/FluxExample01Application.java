@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@EnableJpaRepositories(basePackages="net.kang.main.mysql_repository")
+@EnableJpaRepositories(basePackages= "net.kang.main.mysql.repository")
 @SpringBootApplication
 public class FluxExample01Application {
 

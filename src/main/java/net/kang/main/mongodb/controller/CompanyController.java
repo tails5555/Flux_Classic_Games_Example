@@ -1,7 +1,7 @@
-package net.kang.main.controller;
+package net.kang.main.mongodb.controller;
 
-import net.kang.main.domain.Company;
-import net.kang.main.service.CompanyService;
+import net.kang.main.mongodb.domain.Company;
+import net.kang.main.mongodb.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
