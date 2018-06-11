@@ -1,6 +1,8 @@
 package net.kang.main.mongodb.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -9,6 +11,8 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 import java.util.Date;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Document(collection="company")
 // 고전 게임 제작 회사. 물론 콘솔 게임 회사도 이용할 수 있다.
 public class Company {

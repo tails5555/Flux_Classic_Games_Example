@@ -23,7 +23,7 @@ public class ConsolePhoto {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     long id;
 
-    // 실제로 저장 되는 사진 이름. 그렇지만 보안을 위해 암호롸를 적용시켜야 한다.
+    // 실제로 저장 되는 사진 이름. 그렇지만 보안을 위해 암호화를 적용시켜야 한다.
     @Column(name="photoName")
     String name;
 

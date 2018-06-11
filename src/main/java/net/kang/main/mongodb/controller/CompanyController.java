@@ -1,7 +1,7 @@
 package net.kang.main.mongodb.controller;
 
-import net.kang.main.mongodb.domain.Company;
 import net.kang.main.mongodb.service.CompanyService;
+import net.kang.main.mongodb.vo.CompanyVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,12 +26,12 @@ public class CompanyController {
     @Autowired CompanyService companyService;
 
     @GetMapping("all_company")
-    public Flux<Company> allCompany(){
+    public Flux<CompanyVO> allCompany(){
         return companyService.findAll();
     }
 
     @GetMapping("one_company/{id}")
-    public Mono<ResponseEntity<Company>> oneCompany(@PathVariable("id") String id){
+    public Mono<ResponseEntity<CompanyVO>> oneCompany(@PathVariable("id") String id){
         return companyService.findOne(id).map(company -> {
             return ResponseEntity.ok(company);
         }).defaultIfEmpty(
@@ -40,17 +40,17 @@ public class CompanyController {
     }
 
     @PostMapping("create_company")
-    public Mono<ResponseEntity<Company>> createCompany(@Valid @RequestBody Company company){
-        return companyService.create(company).map(c -> {
-            return new ResponseEntity<Company>(c, HttpStatus.CREATED);
+    public Mono<ResponseEntity<CompanyVO>> createCompany(@Valid @RequestBody CompanyVO companyVO){
+        return companyService.create(companyVO).map(c -> {
+            return new ResponseEntity<CompanyVO>(c, HttpStatus.CREATED);
         }).defaultIfEmpty(
             new ResponseEntity<>(HttpStatus.NOT_FOUND)
         );
     }
 
     @PutMapping("update_company/{id}")
-    public Mono<ResponseEntity<Company>> updateCompany(@PathVariable("id") String id, @Valid @RequestBody Company company){
-        return companyService.update(id, company)
+    public Mono<ResponseEntity<CompanyVO>> updateCompany(@PathVariable("id") String id, @Valid @RequestBody CompanyVO companyVO){
+        return companyService.update(id, companyVO)
             .map(newCompany -> {
                 return ResponseEntity.ok(newCompany);
             }).defaultIfEmpty(

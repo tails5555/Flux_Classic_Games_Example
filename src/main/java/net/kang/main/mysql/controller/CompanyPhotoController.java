@@ -1,7 +1,7 @@
 package net.kang.main.mysql.controller;
 
 import net.kang.main.mysql.domain.CompanyPhoto;
-import net.kang.main.mysql.repository.CompanyPhotoRepository;
+import net.kang.main.mysql.service.CompanyPhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,15 +22,16 @@ import java.util.List;
 @RequestMapping("company_photo")
 // 이는 MySQL와 MongoDB끼리 서로 연동이 가능한지에 대해 확인 차원해서 올린 예제입니다. 계속 진행하면서 채우겠습니다.
 public class CompanyPhotoController {
-    @Autowired CompanyPhotoRepository companyPhotoRepository;
-    @GetMapping("all_photo")
-    public List<CompanyPhoto> findAll(){
-        return companyPhotoRepository.findAll();
+    @Autowired CompanyPhotoService companyPhotoService;
+
+    @GetMapping("{compId}")
+    public List<CompanyPhoto> findByCompId(@PathVariable("compId") String compId){
+        return companyPhotoService.findByCompId(compId);
     }
 
     @GetMapping("one_photo/view/{photoId}")
     public ResponseEntity<?> photoView(@PathVariable("photoId") long id) throws ServletException, IOException {
-        CompanyPhoto photo = companyPhotoRepository.findById(id).orElse(null);
+        CompanyPhoto photo = companyPhotoService.findOne(id);
         if(photo!=null) {
             HttpHeaders headers = new HttpHeaders();
             switch(photo.getSuffix()) {
