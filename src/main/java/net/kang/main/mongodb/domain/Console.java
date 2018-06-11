@@ -1,6 +1,8 @@
 package net.kang.main.mongodb.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -8,6 +10,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Document(collection="console")
 // 게임 콘솔(오락기) 객체.
 public class Console {
@@ -27,7 +31,5 @@ public class Console {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     Date releaseDate;
 
-    // 콘솔 제작 회사.
     Company company;
-
 }

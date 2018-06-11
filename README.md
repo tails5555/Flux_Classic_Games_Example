@@ -1,4 +1,4 @@
-<h1>Classic Games Community Server Side<br/>
+<h1>Classic Games REST API Example<br/>
 <sub>With Spring Web Flux</sub></h1>
 
 Web MVC 패턴을 벗어나서 이제는 Reactive한 Web Flux의 시대를 맞이를 하는 연습을 해 보겠습니다.

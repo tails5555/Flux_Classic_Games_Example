@@ -1,8 +1,8 @@
 package net.kang.main.mongodb.controller;
 
 import net.kang.main.model.ConsoleForm;
-import net.kang.main.mongodb.domain.Console;
 import net.kang.main.mongodb.service.ConsoleService;
+import net.kang.main.mongodb.vo.ConsoleVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,12 +27,12 @@ public class ConsoleController {
     @Autowired ConsoleService consoleService;
 
     @GetMapping("all_console")
-    public Flux<Console> allConsole(){
+    public Flux<ConsoleVO> allConsole(){
         return consoleService.findAll();
     }
 
     @GetMapping("one_console/{id}")
-    public Mono<ResponseEntity<Console>> oneConsole(@PathVariable("id") String id){
+    public Mono<ResponseEntity<ConsoleVO>> oneConsole(@PathVariable("id") String id){
         return consoleService.findOne(id).map(console -> {
             return ResponseEntity.ok(console);
         }).defaultIfEmpty(
@@ -41,19 +41,19 @@ public class ConsoleController {
     }
 
     @PostMapping("create_console")
-    public Mono<ResponseEntity<Console>> createConsole(@Valid @RequestBody ConsoleForm consoleForm){
-        return consoleService.create(consoleForm).map(console -> {
-            return new ResponseEntity<Console>(console, HttpStatus.CREATED);
+    public Mono<ResponseEntity<ConsoleVO>> createConsole(@Valid @RequestBody ConsoleForm consoleForm){
+        return consoleService.create(consoleForm).map(consoleVO -> {
+            return new ResponseEntity<ConsoleVO>(consoleVO, HttpStatus.CREATED);
         }).defaultIfEmpty(
             new ResponseEntity<>(HttpStatus.NOT_FOUND)
         );
     }
 
     @PutMapping("update_console/{id}")
-    public Mono<ResponseEntity<Console>> updateConsole(@PathVariable("id") String id, @Valid @RequestBody ConsoleForm consoleForm){
+    public Mono<ResponseEntity<ConsoleVO>> updateConsole(@PathVariable("id") String id, @Valid @RequestBody ConsoleForm consoleForm){
         return consoleService.update(id, consoleForm)
-            .map(console -> {
-                return ResponseEntity.ok(console);
+            .map(consoleVO -> {
+                return ResponseEntity.ok(consoleVO);
             }).defaultIfEmpty(
                 new ResponseEntity<>(HttpStatus.NOT_FOUND)
             );

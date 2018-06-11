@@ -1,35 +1,13 @@
 package net.kang.main.mongodb.service;
 
-import net.kang.main.mongodb.domain.Genre;
-import net.kang.main.mongodb.repository.GenreRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import net.kang.main.mongodb.vo.GenreVO;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Service
-public class GenreService {
-    @Autowired GenreRepository genreRepository;
-    public Flux<Genre> findAll(){
-        return genreRepository.findAll();
-    }
-    public Mono<Genre> findOne(String id){
-        return genreRepository.findById(id);
-    }
-    public Mono<Genre> create(Genre genre){
-        return genreRepository.insert(genre);
-    }
-    public Mono<Genre> update(String id, Genre genre){
-        return genreRepository.findById(id)
-            .flatMap(g -> {
-                g.setName(genre.getName());
-                return genreRepository.save(genre);
-            });
-    }
-    public Mono<Void> delete(String id){
-        return genreRepository.findById(id)
-            .flatMap(g -> {
-                return genreRepository.delete(g);
-            });
-    }
+public interface GenreService {
+    public Flux<GenreVO> findAll();
+    public Mono<GenreVO> findOne(String id);
+    public Mono<GenreVO> create(GenreVO genreVO);
+    public Mono<GenreVO> update(String id, GenreVO genreVO);
+    public Mono<Void> delete(String id);
 }

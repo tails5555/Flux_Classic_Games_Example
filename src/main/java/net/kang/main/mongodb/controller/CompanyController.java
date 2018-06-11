@@ -32,8 +32,8 @@ public class CompanyController {
 
     @GetMapping("one_company/{id}")
     public Mono<ResponseEntity<CompanyVO>> oneCompany(@PathVariable("id") String id){
-        return companyService.findOne(id).map(company -> {
-            return ResponseEntity.ok(company);
+        return companyService.findOne(id).map(companyVO -> {
+            return ResponseEntity.ok(companyVO);
         }).defaultIfEmpty(
             new ResponseEntity<>(HttpStatus.NOT_FOUND)
         );

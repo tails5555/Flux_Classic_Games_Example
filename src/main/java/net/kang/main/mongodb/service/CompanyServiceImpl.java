@@ -11,18 +11,22 @@ import reactor.core.publisher.Mono;
 public class CompanyServiceImpl implements CompanyService{
     @Autowired CompanyRepository companyRepository;
 
+    @Override
     public Flux<CompanyVO> findAll(){
         return companyRepository.findAll().map(company -> CompanyVO.builtToCompanyVO(company));
     }
 
+    @Override
     public Mono<CompanyVO> findOne(String id){
         return companyRepository.findById(id).map(company -> CompanyVO.builtToCompanyVO(company));
     }
 
+    @Override
     public Mono<CompanyVO> create(CompanyVO companyVO){
         return companyRepository.insert(CompanyVO.builtToCompany(companyVO)).map(company -> CompanyVO.builtToCompanyVO(company));
     }
 
+    @Override
     public Mono<CompanyVO> update(String id, CompanyVO companyVO){
         return companyRepository.findById(id)
                 .flatMap(c -> {
@@ -33,6 +37,7 @@ public class CompanyServiceImpl implements CompanyService{
                 }).map(company -> CompanyVO.builtToCompanyVO(company));
     }
 
+    @Override
     public Mono<Void> delete(String id){
         return companyRepository.findById(id)
                 .flatMap(c -> {

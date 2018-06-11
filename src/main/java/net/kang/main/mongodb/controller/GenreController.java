@@ -1,7 +1,7 @@
 package net.kang.main.mongodb.controller;
 
-import net.kang.main.mongodb.domain.Genre;
 import net.kang.main.mongodb.service.GenreService;
+import net.kang.main.mongodb.vo.GenreVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,12 +26,12 @@ public class GenreController {
     @Autowired GenreService genreService;
 
     @GetMapping("all_genre")
-    public Flux<Genre> allGenre(){
+    public Flux<GenreVO> allGenre(){
         return genreService.findAll();
     }
 
     @GetMapping("one_genre/{id}")
-    public Mono<ResponseEntity<Genre>> oneGenre(@PathVariable("id") String id){
+    public Mono<ResponseEntity<GenreVO>> oneGenre(@PathVariable("id") String id){
         return genreService.findOne(id).map(genre -> {
             return ResponseEntity.ok(genre);
         }).defaultIfEmpty(
@@ -40,17 +40,17 @@ public class GenreController {
     }
 
     @PostMapping("create_genre")
-    public Mono<ResponseEntity<Genre>> createGenre(@Valid @RequestBody Genre genre){
-        return genreService.create(genre).map(g -> {
-            return new ResponseEntity<Genre>(g, HttpStatus.CREATED);
+    public Mono<ResponseEntity<GenreVO>> createGenre(@Valid @RequestBody GenreVO genreVO){
+        return genreService.create(genreVO).map(g -> {
+            return new ResponseEntity<GenreVO>(g, HttpStatus.CREATED);
         }).defaultIfEmpty(
             new ResponseEntity<>(HttpStatus.NOT_FOUND)
         );
     }
 
     @PutMapping("update_genre/{id}")
-    public Mono<ResponseEntity<Genre>> updateGenre(@PathVariable("id") String id, @Valid @RequestBody Genre genre){
-        return genreService.update(id, genre).map(g -> {
+    public Mono<ResponseEntity<GenreVO>> updateGenre(@PathVariable("id") String id, @Valid @RequestBody GenreVO genreVO){
+        return genreService.update(id, genreVO).map(g -> {
             return ResponseEntity.ok(g);
         }).defaultIfEmpty(
             new ResponseEntity<>(HttpStatus.NOT_FOUND)
